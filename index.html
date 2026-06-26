@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fazenda Girassol — Agricultura de precisão, sabor angolano</title>
+<meta name="description" content="Fazenda Girassol: líder em hortofrutícolas em Angola desde 2002. Hortícolas, ervas aromáticas e frutas tropicais cultivadas com padrões europeus de qualidade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='8' fill='%23C49A3A'/%3E%3Cg stroke='%231F3A2E' stroke-width='3' stroke-linecap='round'%3E%3Cline x1='24' y1='2' x2='24' y2='10'/%3E%3Cline x1='24' y1='38' x2='24' y2='46'/%3E%3Cline x1='2' y1='24' x2='10' y2='24'/%3E%3Cline x1='38' y1='24' x2='46' y2='24'/%3E%3Cline x1='8' y1='8' x2='14' y2='14'/%3E%3Cline x1='34' y1='34' x2='40' y2='40'/%3E%3Cline x1='40' y1='8' x2='34' y2='14'/%3E%3Cline x1='14' y1='34' x2='8' y2='40'/%3E%3C/g%3E%3C/svg%3E">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root{
+  --verde-cultivo:#1F3A2E;   /* primary deep green */
+  --verde-folha:#4F7A5B;     /* mid sage green */
+  --verde-claro:#8FAE93;     /* light decorative green */
+  --areia:#F3ECDC;           /* warm beige background */
+  --areia-escura:#E7DCC4;    /* deeper beige for contrast blocks */
+  --branco:#FFFFFF;
+  --dourado:#C49A3A;         /* muted gold accent */
+  --carvao:#23261F;          /* warm near-black text */
+  --linha: rgba(35,38,31,0.12);
+  --linha-clara: rgba(255,255,255,0.18);
+
+  --display: 'Poppins', sans-serif;
+  --body: 'Montserrat', sans-serif;
+
+  --container: 1180px;
+  --pad: clamp(20px, 5vw, 64px);
+  --section-pad: clamp(72px, 10vw, 132px);
+  --radius: 4px;
+  --ease: cubic-bezier(.22,1,.36,1);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:.01ms !important; transition-duration:.01ms !important;}
+}
+body{
+  font-family:var(--body);
+  color:var(--carvao);
+  background:var(--branco);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+button{font-family:inherit;cursor:pointer;border:none;background:none;}
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--pad);}
+.section{padding:var(--section-pad) 0;position:relative;}
+:focus-visible{outline:2px solid var(--dourado);outline-offset:3px;}
+
+.eyebrow{
+  font-family:var(--body);
+  font-weight:600;
+  font-size:0.78rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--verde-folha);
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:18px;
+}
+.eyebrow::before{
+  content:'';
+  width:22px;height:1px;
+  background:var(--dourado);
+  display:inline-block;
+}
+h1,h2,h3,h4{
+  font-family:var(--display);
+  color:var(--verde-cultivo);
+  line-height:1.15;
+  letter-spacing:-0.01em;
+}
+h2{font-size:clamp(1.9rem, 3.4vw, 2.7rem);font-weight:600;}
+h3{font-size:clamp(1.2rem, 1.8vw, 1.45rem);font-weight:600;}
+p{color:#454a3f;}
+.lede{font-size:clamp(1rem,1.4vw,1.15rem);color:#454a3f;max-width:640px;}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--body);font-weight:600;font-size:0.92rem;
+  letter-spacing:0.02em;
+  padding:15px 28px;
+  border-radius:var(--radius);
+  transition:transform .35s var(--ease), background .3s, color .3s, box-shadow .3s;
+  white-space:nowrap;
+}
+.btn-primary{background:var(--verde-cultivo);color:var(--branco);}
+.btn-primary:hover{background:#16291F;transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(31,58,46,0.45);}
+.btn-outline{border:1.5px solid var(--verde-cultivo);color:var(--verde-cultivo);}
+.btn-outline:hover{background:var(--verde-cultivo);color:var(--branco);transform:translateY(-2px);}
+.btn-gold{background:var(--dourado);color:var(--verde-cultivo);}
+.btn-gold:hover{background:#B08A2E;transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(196,154,58,0.5);}
+.btn svg{width:16px;height:16px;flex-shrink:0;}
+
+.icon{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
+
+/* reveal-on-scroll base state */
+.reveal{opacity:0;transform:translateY(28px);}
+.reveal.is-visible{opacity:1;transform:none;transition:opacity .8s var(--ease), transform .8s var(--ease);}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(243,236,220,0);
+  border-bottom:1px solid transparent;
+  transition:background .4s, border-color .4s, padding .4s;
+  padding:22px 0;
+}
+.site-header.scrolled{
+  background:rgba(243,236,220,0.92);
+  backdrop-filter:blur(10px);
+  border-bottom-color:var(--linha);
+  padding:14px 0;
+}
+.site-header .container{display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.logo{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:600;color:var(--verde-cultivo);}
+.logo .mark{width:34px;height:34px;flex-shrink:0;}
+.logo span{font-size:0.98rem;letter-spacing:0.04em;text-transform:uppercase;}
+.logo small{display:block;font-family:var(--body);font-weight:500;font-size:0.6rem;letter-spacing:0.14em;color:var(--verde-folha);text-transform:uppercase;}
+.logo img{height:48px;width:auto;display:block;object-fit:contain;}
+.site-header.scrolled .logo img{height:40px;transition:height .4s var(--ease);}
+
+.main-nav{display:flex;align-items:center;gap:34px;}
+.main-nav a{
+  font-size:0.86rem;font-weight:500;color:var(--carvao);
+  position:relative;padding:4px 0;
+}
+.main-nav a::after{
+  content:'';position:absolute;left:0;bottom:0;height:1.5px;width:0;
+  background:var(--dourado);transition:width .3s var(--ease);
+}
+.main-nav a:hover::after{width:100%;}
+.header-cta{display:flex;align-items:center;gap:14px;}
+.menu-toggle{display:none;width:40px;height:40px;align-items:center;justify-content:center;}
+.menu-toggle span{display:block;width:22px;height:1.5px;background:var(--verde-cultivo);position:relative;}
+.menu-toggle span::before,.menu-toggle span::after{content:'';position:absolute;left:0;width:22px;height:1.5px;background:var(--verde-cultivo);transition:transform .3s;}
+.menu-toggle span::before{top:-7px;}
+.menu-toggle span::after{top:7px;}
+.menu-toggle.open span{background:transparent;}
+.menu-toggle.open span::before{transform:translateY(7px) rotate(45deg);}
+.menu-toggle.open span::after{transform:translateY(-7px) rotate(-45deg);}
+
+.mobile-panel{
+  position:fixed;inset:0;top:0;background:var(--areia);z-index:99;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;gap:28px;
+  transform:translateY(-100%);transition:transform .45s var(--ease);
+}
+.mobile-panel.open{transform:translateY(0);}
+.mobile-panel a{font-family:var(--display);font-size:1.6rem;font-weight:600;color:var(--verde-cultivo);}
+
+@media (max-width:880px){
+  .main-nav{display:none;}
+  .header-cta .btn-outline{display:none;}
+  .menu-toggle{display:flex;}
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;
+  padding-top:clamp(150px,22vw,210px);
+  padding-bottom:clamp(60px,8vw,100px);
+  background:var(--areia);
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240' viewBox='0 0 240 240'%3E%3Cg fill='none' stroke='%231F3A2E' stroke-opacity='0.07' stroke-width='1.3'%3E%3Cpath d='M-20 30 Q60 10 120 30 T260 30'/%3E%3Cpath d='M-20 70 Q60 50 120 70 T260 70'/%3E%3Cpath d='M-20 110 Q60 90 120 110 T260 110'/%3E%3Cpath d='M-20 150 Q60 130 120 150 T260 150'/%3E%3Cpath d='M-20 190 Q60 170 120 190 T260 190'/%3E%3Cpath d='M-20 230 Q60 210 120 230 T260 230'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:340px;
+  opacity:0.9;
+  pointer-events:none;
+}
+.hero .container{position:relative;display:grid;grid-template-columns:1.05fr 0.85fr;gap:60px;align-items:end;}
+.hero-copy h1{font-size:clamp(2.4rem,5.2vw,3.85rem);font-weight:600;margin-bottom:24px;max-width:14ch;}
+.hero-copy h1 em{font-style:normal;color:var(--dourado);}
+.hero-copy .lede{margin-bottom:36px;}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:54px;}
+
+.hero-visual{
+  position:relative;border-radius:6px;overflow:hidden;
+  aspect-ratio:4/5;
+  box-shadow:0 30px 60px -25px rgba(31,58,46,0.35);
+}
+.media{position:relative;width:100%;height:100%;background:var(--verde-cultivo);}
+.media img{width:100%;height:100%;object-fit:cover;}
+.media-duo{position:absolute;inset:0;mix-blend-mode:multiply;background:linear-gradient(160deg,var(--verde-cultivo) 10%, transparent 55%, var(--dourado) 130%);pointer-events:none;}
+.media-fallback{
+  position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+  background:linear-gradient(155deg,var(--verde-cultivo),#2C4F3B 60%, var(--verde-folha));
+  color:rgba(255,255,255,0.88);text-align:center;padding:28px;
+}
+.media-fallback .icon{width:46px;height:46px;color:var(--dourado);}
+.media-fallback span{font-family:var(--body);font-size:0.78rem;letter-spacing:0.05em;max-width:220px;}
+
+.stat-strip{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--linha);
+  padding-top:30px; grid-column:1 / -1;
+}
+.stat-strip div{padding-right:24px;border-right:1px solid var(--linha);}
+.stat-strip div:last-child{border-right:none;}
+.stat-strip strong{display:block;font-family:var(--display);font-size:clamp(1.5rem,2.6vw,2.1rem);color:var(--verde-cultivo);font-weight:600;}
+.stat-strip span{font-size:0.76rem;color:var(--verde-folha);letter-spacing:0.03em;}
+
+@media (max-width:980px){
+  .hero .container{grid-template-columns:1fr;gap:40px;}
+  .hero-visual{order:-1;aspect-ratio:16/10;}
+  .stat-strip{grid-template-columns:repeat(2,1fr);row-gap:22px;}
+  .stat-strip div:nth-child(2n){border-right:none;}
+}
+
+/* ============================================================
+   ABOUT / HISTÓRIA
+   ============================================================ */
+.about .container{display:grid;grid-template-columns:0.9fr 1.1fr;gap:72px;align-items:start;}
+.about-media{position:relative;}
+.about-media .media{aspect-ratio:3/4;border-radius:6px;}
+.founder-card{
+  position:absolute;left:-30px;bottom:-30px;background:var(--branco);
+  padding:22px 26px;max-width:230px;border-radius:4px;
+  box-shadow:0 24px 48px -20px rgba(35,38,31,0.25);
+  border-left:3px solid var(--dourado);
+}
+.founder-card strong{display:block;font-family:var(--display);color:var(--verde-cultivo);font-size:1.6rem;}
+.founder-card span{font-size:0.74rem;color:var(--verde-folha);letter-spacing:0.04em;text-transform:uppercase;}
+
+.timeline{margin-top:46px;}
+.timeline-row{
+  display:grid;grid-template-columns:84px 1fr;gap:20px;
+  padding:18px 0;border-top:1px solid var(--linha);
+}
+.timeline-row:first-child{border-top:none;}
+.timeline-row .yr{font-family:var(--display);font-weight:600;color:var(--dourado);font-size:1.05rem;}
+.timeline-row p{margin:0;font-size:0.92rem;}
+.timeline-row p strong{color:var(--verde-cultivo);}
+
+@media (max-width:880px){
+  .about .container{grid-template-columns:1fr;gap:48px;}
+  .founder-card{position:static;margin-top:18px;}
+}
+
+/* ============================================================
+   PRODUCTS
+   ============================================================ */
+.products{background:var(--areia);}
+.products-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:54px;flex-wrap:wrap;}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--linha);border:1px solid var(--linha);}
+.product-card{
+  background:var(--areia);padding:38px 30px;
+  display:flex;flex-direction:column;gap:16px;
+  transition:background .35s;
+}
+.product-card:hover{background:var(--branco);}
+.product-card .icon-wrap{width:48px;height:48px;color:var(--verde-cultivo);}
+.product-card h3{margin-bottom:2px;}
+.product-card p{font-size:0.88rem;margin-bottom:auto;}
+.product-card .tag{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--dourado);font-weight:600;}
+
+@media (max-width:980px){.product-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:560px){.product-grid{grid-template-columns:1fr;}}
+
+/* ============================================================
+   PROCESS / CADEIA DE FRESCURA  (signature diagram)
+   ============================================================ */
+.process .container{position:relative;}
+.process-intro{max-width:640px;margin-bottom:60px;}
+.chain{position:relative;}
+.chain-line{position:absolute;left:0;right:0;}
+.chain-track{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;
+}
+.chain-track::before{
+  content:'';position:absolute;top:34px;left:5%;right:5%;height:1px;
+  background:var(--linha);z-index:0;
+}
+.chain-path{position:absolute;top:34px;left:0;width:100%;height:2px;pointer-events:none;z-index:0;}
+.chain-step{position:relative;z-index:1;text-align:center;padding:0 14px;}
+.chain-node{
+  width:68px;height:68px;border-radius:50%;background:var(--branco);
+  border:1.5px solid var(--verde-cultivo);display:flex;align-items:center;justify-content:center;
+  margin:0 auto 22px;color:var(--verde-cultivo);
+  transition:background .3s, color .3s;
+}
+.chain-node .icon{width:30px;height:30px;}
+.chain-step.active .chain-node{background:var(--verde-cultivo);color:var(--branco);}
+.chain-step .step-no{display:block;font-family:var(--display);font-weight:600;color:var(--dourado);font-size:0.78rem;letter-spacing:0.1em;margin-bottom:8px;}
+.chain-step h4{font-family:var(--display);font-size:0.95rem;color:var(--verde-cultivo);font-weight:600;margin-bottom:6px;}
+.chain-step p{font-size:0.8rem;line-height:1.5;}
+
+@media (max-width:980px){
+  .chain-track{grid-template-columns:1fr;gap:46px;}
+  .chain-track::before{display:none;}
+  .chain-path{display:none;}
+}
+
+.process-notes{margin-top:80px;display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--linha);border:1px solid var(--linha);}
+.process-note{background:var(--branco);padding:34px;display:flex;gap:20px;}
+.process-note .icon-wrap{width:36px;height:36px;color:var(--dourado);flex-shrink:0;}
+.process-note h4{margin-bottom:8px;}
+.process-note p{font-size:0.88rem;}
+@media (max-width:780px){.process-notes{grid-template-columns:1fr;}}
+
+/* ============================================================
+   QUALITY
+   ============================================================ */
+.quality{background:var(--verde-cultivo);color:var(--branco);}
+.quality h2,.quality .eyebrow{color:var(--branco);}
+.quality .eyebrow::before{background:var(--dourado);}
+.quality .lede{color:rgba(255,255,255,0.75);}
+.quality .container{display:grid;grid-template-columns:0.9fr 1.1fr;gap:60px;}
+.cert-badge{
+  border:1px solid var(--linha-clara);padding:34px;border-radius:4px;
+  display:flex;flex-direction:column;gap:16px;align-self:start;
+}
+.cert-badge .icon-wrap{width:44px;height:44px;color:var(--dourado);}
+.cert-badge strong{font-family:var(--display);font-size:1.3rem;font-weight:600;}
+.cert-badge span{font-size:0.82rem;color:rgba(255,255,255,0.65);}
+
+.quality-list{display:flex;flex-direction:column;gap:0;}
+.quality-list li{
+  display:grid;grid-template-columns:30px 1fr;gap:16px;
+  padding:22px 0;border-top:1px solid var(--linha-clara);
+}
+.quality-list li:first-child{border-top:none;}
+.quality-list .icon-wrap{width:22px;height:22px;color:var(--dourado);margin-top:3px;}
+.quality-list h4{color:var(--branco);margin-bottom:5px;font-size:1.02rem;}
+.quality-list p{color:rgba(255,255,255,0.7);font-size:0.88rem;margin:0;}
+
+@media (max-width:880px){.quality .container{grid-template-columns:1fr;gap:36px;}}
+
+/* ============================================================
+   SUSTAINABILITY
+   ============================================================ */
+.sustain .container{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.sustain-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--linha);border:1px solid var(--linha);}
+.sustain-stats div{background:var(--areia);padding:30px 24px;}
+.sustain-stats strong{display:block;font-family:var(--display);font-size:1.9rem;color:var(--verde-cultivo);font-weight:600;margin-bottom:4px;}
+.sustain-stats span{font-size:0.78rem;color:var(--verde-folha);}
+.sustain-list{margin-top:30px;display:flex;flex-direction:column;gap:18px;}
+.sustain-list li{display:flex;gap:14px;font-size:0.92rem;align-items:flex-start;}
+.sustain-list .icon-wrap{width:20px;height:20px;color:var(--dourado);flex-shrink:0;margin-top:3px;}
+@media (max-width:980px){.sustain .container{grid-template-columns:1fr;gap:40px;}.sustain-stats{order:2;}}
+
+/* ============================================================
+   RECOGNITION
+   ============================================================ */
+.recognition{background:var(--areia-escura);}
+.recognition .container{display:grid;grid-template-columns:auto 1fr auto;gap:40px;align-items:center;}
+.recognition .medal{width:64px;height:64px;color:var(--dourado);flex-shrink:0;}
+.recognition h3{font-size:clamp(1.2rem,2vw,1.5rem);margin-bottom:6px;}
+.recognition p{font-size:0.9rem;margin:0;max-width:520px;}
+.recognition .followers{text-align:right;border-left:1px solid var(--linha);padding-left:40px;}
+.recognition .followers strong{display:block;font-family:var(--display);font-size:1.8rem;color:var(--verde-cultivo);}
+.recognition .followers span{font-size:0.76rem;color:var(--verde-folha);}
+@media (max-width:780px){
+  .recognition .container{grid-template-columns:1fr;text-align:center;gap:20px;}
+  .recognition .followers{border-left:none;text-align:center;padding-left:0;}
+}
+
+/* ============================================================
+   SHOP CTA
+   ============================================================ */
+.shop-cta{
+  background:linear-gradient(135deg,var(--verde-cultivo),#16291F);
+  color:var(--branco);text-align:center;
+}
+.shop-cta .eyebrow{justify-content:center;color:var(--dourado);}
+.shop-cta .eyebrow::before{background:var(--dourado);}
+.shop-cta h2{color:var(--branco);max-width:18ch;margin:0 auto 18px;}
+.shop-cta .lede{color:rgba(255,255,255,0.72);margin:0 auto 38px;text-align:center;}
+.shop-cta .hero-actions{justify-content:center;margin-bottom:0;}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact .container{display:grid;grid-template-columns:0.85fr 1.15fr;gap:70px;}
+.contact-info-card{background:var(--areia);padding:42px;border-radius:4px;}
+.contact-info-card h3{margin-bottom:26px;}
+.contact-detail{display:flex;gap:16px;margin-bottom:22px;align-items:flex-start;}
+.contact-detail .icon-wrap{width:22px;height:22px;color:var(--verde-folha);flex-shrink:0;margin-top:3px;}
+.contact-detail strong{display:block;font-size:0.92rem;color:var(--verde-cultivo);}
+.contact-detail span,.contact-detail a{font-size:0.88rem;color:#454a3f;}
+.social-row{display:flex;gap:12px;margin-top:30px;}
+.social-row a{
+  width:38px;height:38px;border:1px solid var(--linha);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;color:var(--verde-cultivo);
+  transition:background .3s, color .3s;
+}
+.social-row a:hover{background:var(--verde-cultivo);color:var(--branco);}
+.social-row .icon{width:16px;height:16px;}
+
+.contact-form{display:flex;flex-direction:column;gap:18px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.field label{display:block;font-size:0.76rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--verde-folha);margin-bottom:8px;font-weight:600;}
+.field input,.field textarea,.field select{
+  width:100%;border:none;border-bottom:1.5px solid var(--linha);
+  background:transparent;padding:11px 2px;font-family:var(--body);font-size:0.95rem;color:var(--carvao);
+  transition:border-color .3s;
+}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--dourado);outline:none;}
+.field textarea{resize:vertical;min-height:90px;}
+.contact-form .btn{margin-top:8px;align-self:flex-start;}
+@media (max-width:880px){.contact .container{grid-template-columns:1fr;gap:44px;}.form-row{grid-template-columns:1fr;}}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer{background:var(--verde-cultivo);color:rgba(255,255,255,0.78);padding:80px 0 30px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid var(--linha-clara);}
+.footer-brand .logo span,.footer-brand .logo small{color:var(--branco);}
+.footer-brand .logo small{color:var(--verde-claro);}
+.footer-brand p{color:rgba(255,255,255,0.65);font-size:0.86rem;margin:18px 0 0;max-width:280px;}
+.footer-col h4{color:var(--branco);font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;margin-bottom:18px;}
+.footer-col li{margin-bottom:11px;font-size:0.88rem;}
+.footer-col a:hover{color:var(--dourado);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:0.78rem;color:rgba(255,255,255,0.5);flex-wrap:wrap;gap:12px;}
+@media (max-width:880px){.footer-grid{grid-template-columns:1fr 1fr;gap:36px;}.footer-brand{grid-column:1/-1;}}
+@media (max-width:560px){.footer-grid{grid-template-columns:1fr;}}
+
+/* ============================================================
+   WHATSAPP FLOAT
+   ============================================================ */
+.wa-float{
+  position:fixed;bottom:26px;right:26px;z-index:90;
+  width:58px;height:58px;border-radius:50%;background:var(--verde-cultivo);color:var(--branco);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 14px 30px -10px rgba(31,58,46,0.55);
+  transition:transform .3s var(--ease), background .3s;
+}
+.wa-float:hover{transform:translateY(-4px) scale(1.05);background:#16291F;}
+.wa-float .icon{width:26px;height:26px;stroke:none;fill:currentColor;}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     HEADER
+============================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="container">
+    <a href="#inicio" class="logo">
+      <img src="logo-removebg-preview.png" alt="Fazenda Girassol" width="660" height="378">
+    </a>
+
+    <nav class="main-nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#processo">Processo</a>
+      <a href="#sustentabilidade">Sustentabilidade</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <div class="header-cta">
+      <a href="https://fazendagirassol.net/" target="_blank" rel="noopener" class="btn btn-outline">Loja Online</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#sobre">Sobre</a>
+  <a href="#produtos">Produtos</a>
+  <a href="#processo">Processo</a>
+  <a href="#sustentabilidade">Sustentabilidade</a>
+  <a href="#contacto">Contacto</a>
+  <a href="https://fazendagirassol.net/" target="_blank" rel="noopener" style="font-size:1rem;color:#C49A3A;">Loja Online ↗</a>
+</div>
+
+<main>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" id="inicio">
+  <div class="container">
+    <div class="hero-copy">
+      <p class="eyebrow">Líder em hortofrutícolas em Angola</p>
+      <h1 data-anim="title">Da terra angolana, todos os dias, <em>para a sua mesa.</em></h1>
+      <p class="lede" data-anim="fade">Há mais de duas décadas a cultivar legumes, ervas aromáticas e frutas tropicais com padrões europeus de qualidade — de três hectares no Kukuxi a uma referência nacional em segurança alimentar e inovação agrícola.</p>
+      <div class="hero-actions" data-anim="fade">
+        <a href="#produtos" class="btn btn-primary">
+          Conhecer os produtos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#processo" class="btn btn-outline">Como cultivamos</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" data-anim="fade">
+      <div class="media">
+        <img src="campo-aereo-plantacao-kukuxi-luanda.jpg" alt="Vista aérea dos campos de produção da Fazenda Girassol no Kukuxi, Luanda" loading="eager"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-duo"></div>
+        <div class="media-fallback">
+          <svg class="icon" viewBox="0 0 48 48"><path d="M24 6c-8 6-14 14-14 22a14 14 0 0028 0c0-8-6-16-14-22z"/><path d="M24 16v22"/></svg>
+          <span>Substituir por: vista aérea dos campos de produção, Kukuxi — Luanda</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stat-strip">
+      <div><strong data-count="500">0</strong>+ <span>hectares em produção</span></div>
+      <div><strong data-count="800">0</strong>+ <span>colaboradores angolanos</span></div>
+      <div><strong data-count="24">0</strong> <span>anos de actividade</span></div>
+      <div><strong>GlobalGAP</strong><span>certificação internacional</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SOBRE / HISTÓRIA
+============================================================ -->
+<section class="about section" id="sobre">
+  <div class="container">
+    <div class="about-media reveal">
+      <div class="media">
+        <img src="equipa-tecnica-engenheiros-fundadores-campo.jpg" alt="Equipa técnica da Fazenda Girassol no campo" loading="lazy"
+          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="media-duo"></div>
+        <div class="media-fallback">
+          <svg class="icon" viewBox="0 0 48 48"><circle cx="24" cy="16" r="7"/><path d="M10 42c0-9 6-15 14-15s14 6 14 15"/></svg>
+          <span>Substituir por: equipa técnica / fundadores no terreno</span>
+        </div>
+      </div>
+      <div class="founder-card">
+        <strong>2002</strong>
+        <span>Fundada por dois engenheiros técnicos agrícolas angolanos</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="eyebrow">A nossa história</p>
+      <h2 class="reveal">De uma horta de três hectares a uma referência nacional</h2>
+      <p class="lede reveal" style="margin-top:20px;">Em 2003, a Fazenda Girassol começou a operar com apenas três hectares de cultivo no Kukuxi, em Luanda. Hoje, com mais de 500 hectares entre polos de produção ao ar livre e em estufa, e um centro logístico próprio para triagem e controlo de qualidade, é uma das empresas que mais contribui para reduzir a dependência de produtos hortofrutícolas importados em Angola.</p>
+
+      <div class="timeline reveal">
+        <div class="timeline-row">
+          <span class="yr">2003</span>
+          <p><strong>Início das operações</strong> — 3 hectares de cultivo no Kukuxi, Luanda.</p>
+        </div>
+        <div class="timeline-row">
+          <span class="yr">2007</span>
+          <p>Expansão para <strong>15 hectares</strong> de área produtiva.</p>
+        </div>
+        <div class="timeline-row">
+          <span class="yr">2015</span>
+          <p>Área de cultivo cresce para <strong>35 hectares</strong>, consolidando-se como referência em alface e couve.</p>
+        </div>
+        <div class="timeline-row">
+          <span class="yr">2020</span>
+          <p>Início da <strong>produção de frutas tropicais</strong> — banana, papaia, maracujá e pitaya.</p>
+        </div>
+        <div class="timeline-row">
+          <span class="yr">2024</span>
+          <p>Renovação da <strong>certificação GlobalGAP</strong> para banana e pitaya.</p>
+        </div>
+        <div class="timeline-row">
+          <span class="yr">2026</span>
+          <p>Pitaya da Fazenda Girassol eleita <strong>"Sabor do Ano"</strong> em Portugal.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRODUTOS
+============================================================ -->
+<section class="products section" id="produtos">
+  <div class="container">
+    <div class="products-head">
+      <div>
+        <p class="eyebrow">O que cultivamos</p>
+        <h2>Diversidade que começou numa horta e hoje alimenta um país</h2>
+      </div>
+      <p class="lede">Da folha à fruta tropical, cada categoria nasceu de um pioneirismo próprio dentro da agricultura angolana.</p>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card reveal">
+        <div class="icon-wrap">
+          <svg class="icon" viewBox="0 0 48 48"><path d="M10 28c0-12 8-20 20-20-2 14-6 22-20 22z"/><path d="M30 8c-12 0-20 8-20 20"/></svg>
+        </div>
+        <span class="tag">Pioneirismo</span>
+        <h3>Hortícolas</h3>
+        <p>Alface e couve cultivadas com padrões europeus — referência angolana em frescura e durabilidade no frigorífico.</p>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="icon-wrap">
+          <svg class="icon" viewBox="0 0 48 48"><path d="M24 42V18"/><path d="M24 24c-8 0-14-6-14-14 8 0 14 6 14 14z"/><path d="M24 18c8 0 14-6 14-14-8 0-14 6-14 14z"/></svg>
+        </div>
+        <span class="tag">Desde a fundação</span>
+        <h3>Ervas Aromáticas</h3>
+        <p>Pioneiros na produção de ervas aromáticas e folhas em Angola, com colheita e selecção diárias.</p>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="icon-wrap">
+          <svg class="icon" viewBox="0 0 48 48"><circle cx="20" cy="26" r="11"/><circle cx="32" cy="18" r="6"/></svg>
+        </div>
+        <span class="tag">Desde 2020</span>
+        <h3>Frutas Tropicais</h3>
+        <p>Banana, papaia, maracujá e pitaya — certificadas GlobalGAP, com planos de expansão para o mercado internacional.</p>
+      </div>
+
+      <div class="product-card reveal">
+        <div class="icon-wrap">
+          <svg class="icon" viewBox="0 0 48 48"><rect x="8" y="20" width="32" height="18" rx="2"/><path d="M8 20l4-10h24l4 10"/><path d="M8 28h32"/></svg>
+        </div>
+        <span class="tag">Entrega gratuita</span>
+        <h3>Cabazes Frescos</h3>
+        <p>Cabazes de fruta e legumes entregues à porta, sem custos, em viatura isotérmica entre 2ºC e 4ºC.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESSO / CADEIA DE FRESCURA  (signature)
+============================================================ -->
+<section class="process section" id="processo">
+  <div class="container">
+    <p class="eyebrow">Da colheita à entrega</p>
+    <h2 class="process-intro">Uma cadeia de frescura desenhada ao detalhe, do campo até à sua porta</h2>
+
+    <div class="chain reveal">
+      <svg class="chain-path" viewBox="0 0 1000 4" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <line id="chainLine" x1="50" y1="2" x2="950" y2="2" stroke="#C49A3A" stroke-width="2" stroke-dasharray="900" stroke-dashoffset="900"/>
+      </svg>
+      <div class="chain-track">
+        <div class="chain-step">
+          <span class="step-no">01</span>
+          <div class="chain-node">
+            <svg class="icon" viewBox="0 0 48 48"><path d="M24 42c10 0 16-8 16-18-10 0-16 8-16 18z"/><path d="M24 42c-10 0-16-8-16-18 10 0 16 8 16 18z"/><path d="M24 24V8"/></svg>
+          </div>
+          <h4>Colheita diária</h4>
+          <p>Recolha no campo, todos os dias, em polos de produção ao ar livre e em estufa.</p>
+        </div>
+        <div class="chain-step">
+          <span class="step-no">02</span>
+          <div class="chain-node">
+            <svg class="icon" viewBox="0 0 48 48"><circle cx="14" cy="10" r="4"/><circle cx="34" cy="10" r="4"/><path d="M14 14v18M34 14v18"/><path d="M8 38h32"/></svg>
+          </div>
+          <h4>Cabo-via agrícola</h4>
+          <p>Teleférico próprio transporta a fruta do campo até ao armazém sem danificar a casca.</p>
+        </div>
+        <div class="chain-step active">
+          <span class="step-no">03</span>
+          <div class="chain-node">
+            <svg class="icon" viewBox="0 0 48 48"><rect x="8" y="10" width="32" height="28" rx="2"/><path d="M8 20h32"/><path d="M16 28h6M26 28h6"/></svg>
+          </div>
+          <h4>Triagem e selecção</h4>
+          <p>Central logística em Luanda faz o controlo de qualidade e embalamento.</p>
+        </div>
+        <div class="chain-step">
+          <span class="step-no">04</span>
+          <div class="chain-node">
+            <svg class="icon" viewBox="0 0 48 48"><path d="M24 4v14M19 13l5 5 5-5"/><rect x="10" y="22" width="28" height="20" rx="2"/></svg>
+          </div>
+          <h4>Câmara fria</h4>
+          <p>Conservação entre 2ºC e 4ºC até ao momento da distribuição.</p>
+        </div>
+        <div class="chain-step">
+          <span class="step-no">05</span>
+          <div class="chain-node">
+            <svg class="icon" viewBox="0 0 48 48"><rect x="4" y="16" width="26" height="16" rx="1.5"/><path d="M30 22h8l6 6v4h-14z"/><circle cx="13" cy="36" r="3.5"/><circle cx="34" cy="36" r="3.5"/></svg>
+          </div>
+          <h4>Frota isotérmica</h4>
+          <p>Distribuição refrigerada até à sua mesa, mantendo a frescura do campo.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-notes">
+      <div class="process-note reveal">
+        <div class="icon-wrap">
+          <svg class="icon" viewBox="0 0 48 48"><path d="M24 6v8M24 34v8M14 14l5 5M29 29l5 5M6 24h8M34 24h8M14 34l5-5M29 19l5-5"/><circle cx="24" cy="24" r="5"/></svg>
+        </div>
+        <div>
+          <h4>Drones no tratamento fitossanitário</h4>
+          <p>Aplicação aérea de precisão reduz o uso de insumos e protege o solo e os cursos de água.</p>
+        </div>
+      </div>
+      <div class="process-note reveal">
+        <div class="icon-wrap">
+          <svg class="icon" viewBox="0 0 48 48"><path d="M6 30c6-14 30-14 36 0"/><path d="M6 30h36"/><path d="M14 30v8M24 30v8M34 30v8"/></svg>
+        </div>
+        <div>
+          <h4>Estufas e campo aberto</h4>
+          <p>Dois polos de produção combinam cultivo protegido e ao ar livre para diversificar a colheita o ano inteiro.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     QUALIDADE
+============================================================ -->
+<section class="quality section" id="qualidade">
+  <div class="container">
+    <div>
+      <p class="eyebrow">Padrões que exigimos de nós mesmos</p>
+      <h2 class="reveal">Qualidade europeia, com certificação internacional</h2>
+      <p class="lede reveal" style="color:rgba(255,255,255,0.75);margin-top:18px;">Os nossos processos produtivos seguem os parâmetros internacionais mais exigentes, do uso responsável de defensivos agrícolas ao cumprimento de normas de higiene e segurança alimentar em cada etapa da cadeia.</p>
+
+      <div class="cert-badge reveal" style="margin-top:40px;">
+        <div class="icon-wrap">
+          <svg class="icon" viewBox="0 0 48 48" stroke="currentColor"><path d="M24 4l16 7v11c0 12-7 19-16 22-9-3-16-10-16-22V11z"/><path d="M17 24l5 5 9-11"/></svg>
+        </div>
+        <strong>Certificação GlobalGAP</strong>
+        <span>Good Agricultural Practice — renovada em 2024 para banana e pitaya, atestando boas práticas agrícolas internacionais.</span>
+      </div>
+    </div>
+
+    <ul class="quality-list reveal">
+      <li>
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><path d="M10 24l8 8 20-20"/></svg></div>
+        <div><h4>Selecção criteriosa</h4><p>Cada colheita passa por triagem rigorosa na central antes de seguir para distribuição.</p></div>
+      </li>
+      <li>
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><path d="M10 24l8 8 20-20"/></svg></div>
+        <div><h4>Garantia de satisfação</h4><p>Se não ficar satisfeito com algum produto, o valor é devolvido — sem burocracia.</p></div>
+      </li>
+      <li>
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><path d="M10 24l8 8 20-20"/></svg></div>
+        <div><h4>Padrões europeus</h4><p>Política de produção alinhada com as exigências de mercados internacionais.</p></div>
+      </li>
+      <li>
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><path d="M10 24l8 8 20-20"/></svg></div>
+        <div><h4>Segurança alimentar</h4><p>Boas práticas em toda a cadeia, da semente ao produto embalado.</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============================================================
+     SUSTENTABILIDADE
+============================================================ -->
+<section class="sustain section" id="sustentabilidade">
+  <div class="container">
+    <div>
+      <p class="eyebrow">Impacto para além do campo</p>
+      <h2 class="reveal">Crescer a economia local, cuidar da terra</h2>
+      <ul class="sustain-list reveal">
+        <li>
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><path d="M24 4v40M10 18c8 0 14 4 14 12M38 18c-8 0-14 4-14 12"/></svg></div>
+          <span>Práticas regenerativas — preservação de matas ciliares, cobertura permanente do solo e rotação de pastagem nas áreas de produção.</span>
+        </li>
+        <li>
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><circle cx="14" cy="16" r="6"/><circle cx="34" cy="16" r="6"/><path d="M4 40c0-8 5-13 10-13s10 5 10 13M24 40c0-8 5-13 10-13s10 5 10 13"/></svg></div>
+          <span>Parcerias estratégicas com agricultores de várias províncias angolanas, fortalecendo a produção nacional.</span>
+        </li>
+        <li>
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><path d="M24 6c-9 7-16 15-16 23a16 16 0 0032 0c0-8-7-16-16-23z"/></svg></div>
+          <span>Doações regulares de produtos hortícolas a comunidades em situação de necessidade.</span>
+        </li>
+        <li>
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><circle cx="24" cy="14" r="7"/><path d="M10 42c0-9 6-15 14-15s14 6 14 15"/></svg></div>
+          <span>Formação e valorização de quadros angolanos, com atenção especial à mão-de-obra feminina.</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sustain-stats reveal">
+      <div><strong>+800</strong><span>colaboradores angolanos formados internamente</span></div>
+      <div><strong>500+</strong><span>hectares sob práticas sustentáveis</span></div>
+      <div><strong>Vários</strong><span>parceiros agrícolas em diferentes províncias</span></div>
+      <div><strong>2020</strong><span>diversificação para frutas tropicais</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RECOGNITION
+============================================================ -->
+<section class="recognition section" style="padding:64px 0;">
+  <div class="container">
+    <svg class="medal" viewBox="0 0 48 48"><circle cx="24" cy="18" r="12"/><path d="M17 28l-4 14 11-6 11 6-4-14"/><path d="M18 18l4 4 8-8"/></svg>
+    <div>
+      <h3>Pitaya Fazenda Girassol eleita "Sabor do Ano 2026" em Portugal</h3>
+      <p>Reconhecimento que confirma o padrão internacional alcançado pela produção de frutas tropicais angolanas, fruto de mais de duas décadas de investimento em qualidade.</p>
+    </div>
+    <div class="followers">
+      <strong>100.000+</strong>
+      <span>seguidores na comunidade Fazenda Girassol</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SHOP CTA
+============================================================ -->
+<section class="shop-cta section">
+  <div class="container">
+    <p class="eyebrow">Loja online &amp; aplicação móvel</p>
+    <h2>Peça os seus legumes, ervas e frutas sem saber ao supermercado</h2>
+    <p class="lede">Frescura colhida na véspera, entregue gratuitamente em viatura isotérmica entre 2ºC e 4ºC. Se não ficar satisfeito, devolvemos o seu valor.</p>
+    <div class="hero-actions">
+      <a href="https://fazendagirassol.com" target="_blank" rel="noopener" class="btn btn-gold">Visitar loja online</a>
+      <a href="https://play.google.com/store/apps/details?id=com.fazendagirassol.app" target="_blank" rel="noopener" class="btn btn-outline" style="border-color:rgba(255,255,255,0.4);color:#fff;">Baixar aplicação</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CONTACTO
+============================================================ -->
+<section class="contact section" id="contacto">
+  <div class="container">
+    <div class="contact-info-card reveal">
+      <h3>Fale connosco</h3>
+
+      <div class="contact-detail">
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><path d="M8 12c0 16 12 28 28 28l4-8-10-4-4 4c-6-3-11-8-14-14l4-4-4-10z"/></svg></div>
+        <div><strong>Loja Online (Geral)</strong><br><a href="tel:+244949555559">949 555 559</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><path d="M8 12c0 16 12 28 28 28l4-8-10-4-4 4c-6-3-11-8-14-14l4-4-4-10z"/></svg></div>
+        <div><strong>Registos e Activações</strong><br><a href="tel:+244921296272">921 296 272</a></div>
+      </div>
+      <div class="contact-detail">
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 48 48"><path d="M24 4c-9 7-16 15-16 24a16 16 0 0032 0c0-9-7-17-16-24z"/></svg></div>
+        <div><strong>Localização</strong><br><span>Kukuxi, Luanda — Angola</span></div>
+      </div>
+
+      <div class="social-row">
+        <a href="https://www.facebook.com/fazendagirassolangola/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg class="icon" viewBox="0 0 24 24" stroke="none" fill="currentColor"><path d="M13 22v-8h3l1-4h-4V7.5C13 6.3 13.5 5 15.3 5H17V1.4C16.6 1.3 15.2 1 13.7 1 10.5 1 8 3 8 6.8V10H5v4h3v8z"/></svg>
+        </a>
+        <a href="https://ao.linkedin.com/company/fazendagirassol" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg class="icon" viewBox="0 0 24 24" stroke="none" fill="currentColor"><path d="M4.98 3.5C4.98 4.6 4.1 5.5 3 5.5S1 4.6 1 3.5 1.9 1.5 3 1.5s1.98.9 1.98 2zM1.4 8h3.2v13H1.4zM8.2 8h3v1.8h.1c.5-.9 1.7-1.9 3.5-1.9 3.7 0 4.4 2.4 4.4 5.6V21h-3.2v-6.6c0-1.6 0-3.6-2.2-3.6s-2.5 1.7-2.5 3.5V21H8.2z"/></svg>
+        </a>
+        <a href="https://wa.me/244949555559" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg class="icon" viewBox="0 0 24 24" stroke="none" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.7.7.7-2.6-.2-.3A8 8 0 1112 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-1.1-.5-2.4-1.6-3-2.7-.1-.2-.1-.3.1-.5l.5-.6c.1-.2.1-.4 0-.5l-.6-1.4c-.1-.3-.3-.3-.5-.3h-.5c-.2 0-.4.1-.5.3-.2.3-.7.9-.7 1.9 0 1 .7 2.1 1.6 3.1 1.5 1.6 2.9 2.2 4.4 2.4.6.1 1.2-.3 1.4-.8.1-.3.1-.6.1-.9-.1-.1-.2-.2-.3-.2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form reveal" id="contactForm">
+      <h3>Envie uma mensagem</h3>
+      <div class="form-row">
+        <div class="field">
+          <label for="fname">Nome</label>
+          <input type="text" id="fname" required>
+        </div>
+        <div class="field">
+          <label for="fphone">Telefone</label>
+          <input type="tel" id="fphone" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="fsubject">Assunto</label>
+        <select id="fsubject">
+          <option>Informações sobre produtos</option>
+          <option>Parcerias e fornecimento</option>
+          <option>Loja Online e entregas</option>
+          <option>Outro assunto</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="fmsg">Mensagem</label>
+        <textarea id="fmsg" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        Enviar via WhatsApp
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </button>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo">
+          <svg class="mark" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="7.5" fill="#C49A3A"/>
+            <g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round">
+              <line x1="24" y1="3" x2="24" y2="12"/><line x1="24" y1="36" x2="24" y2="45"/>
+              <line x1="3" y1="24" x2="12" y2="24"/><line x1="36" y1="24" x2="45" y2="24"/>
+              <line x1="9.5" y1="9.5" x2="15.5" y2="15.5"/><line x1="32.5" y1="32.5" x2="38.5" y2="38.5"/>
+              <line x1="38.5" y1="9.5" x2="32.5" y2="15.5"/><line x1="15.5" y1="32.5" x2="9.5" y2="38.5"/>
+            </g>
+          </svg>
+          <span>Fazenda Girassol<br><small>Deliciosamente saudável</small></span>
+        </a>
+        <p>Líder em hortofrutícolas em Angola desde 2002. Hortícolas, ervas aromáticas e frutas tropicais cultivadas com padrões europeus de qualidade.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#sobre">A nossa história</a></li>
+          <li><a href="#processo">Processo produtivo</a></li>
+          <li><a href="#sustentabilidade">Sustentabilidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Produtos</h4>
+        <ul>
+          <li><a href="#produtos">Hortícolas</a></li>
+          <li><a href="#produtos">Ervas aromáticas</a></li>
+          <li><a href="#produtos">Frutas tropicais</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="tel:+244949555559">949 555 559</a></li>
+          <li><a href="https://fazendagirassol.net/" target="_blank" rel="noopener">Loja online ↗</a></li>
+          <li><a href="#contacto">Fale connosco</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Fazenda Girassol. Todos os direitos reservados.</span>
+      <span>Kukuxi, Luanda — Angola</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/244949555559" target="_blank" rel="noopener" class="wa-float" aria-label="Contactar via WhatsApp">
+  <svg class="icon" viewBox="0 0 24 24"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.7.7.7-2.6-.2-.3A8 8 0 1112 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-1.1-.5-2.4-1.6-3-2.7-.1-.2-.1-.3.1-.5l.5-.6c.1-.2.1-.4 0-.5l-.6-1.4c-.1-.3-.3-.3-.5-.3h-.5c-.2 0-.4.1-.5.3-.2.3-.7.9-.7 1.9 0 1 .7 2.1 1.6 3.1 1.5 1.6 2.9 2.2 4.4 2.4.6.1 1.2-.3 1.4-.8.1-.3.1-.6.1-.9-.1-.1-.2-.2-.3-.2z"/></svg>
+</a>
+
+<script>
+/* ---------- Header scroll state ---------- */
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 40);
+}, {passive:true});
+
+/* ---------- Mobile menu ---------- */
+const menuToggle = document.getElementById('menuToggle');
+const mobilePanel = document.getElementById('mobilePanel');
+menuToggle.addEventListener('click', () => {
+  const isOpen = mobilePanel.classList.toggle('open');
+  menuToggle.classList.toggle('open', isOpen);
+  menuToggle.setAttribute('aria-expanded', isOpen);
+});
+mobilePanel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  mobilePanel.classList.remove('open');
+  menuToggle.classList.remove('open');
+}));
+
+/* ---------- Hero load sequence ---------- */
+window.addEventListener('DOMContentLoaded', () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (typeof anime === 'undefined') return;
+  anime.timeline({easing:'cubicBezier(.22,1,.36,1)'})
+    .add({targets:'[data-anim="title"]', opacity:[0,1], translateY:[26,0], duration:900})
+    .add({targets:'[data-anim="fade"]', opacity:[0,1], translateY:[18,0], duration:700, delay:anime.stagger(120)}, '-=500');
+});
+
+/* ---------- Scroll reveal ---------- */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, {threshold:0.15});
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ---------- Stat counters ---------- */
+const counters = document.querySelectorAll('[data-count]');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = parseInt(el.dataset.count, 10);
+    if (typeof anime !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      anime({targets:el, innerHTML:[0,target], round:1, duration:1400, easing:'easeOutCubic'});
+    } else {
+      el.innerHTML = target;
+    }
+    counterObserver.unobserve(el);
+  });
+}, {threshold:0.4});
+counters.forEach(el => counterObserver.observe(el));
+
+/* ---------- Freshness chain line draw ---------- */
+const chainLine = document.getElementById('chainLine');
+if (chainLine) {
+  const chainObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      if (typeof anime !== 'undefined' && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        anime({targets:chainLine, strokeDashoffset:[900,0], duration:1600, easing:'easeInOutQuad'});
+      } else {
+        chainLine.setAttribute('stroke-dashoffset','0');
+      }
+      chainObserver.unobserve(entry.target);
+    });
+  }, {threshold:0.3});
+  chainObserver.observe(document.querySelector('.chain'));
+}
+
+/* ---------- Contact form -> WhatsApp ---------- */
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = document.getElementById('fname').value;
+  const phone = document.getElementById('fphone').value;
+  const subject = document.getElementById('fsubject').value;
+  const msg = document.getElementById('fmsg').value;
+  const text = `Olá, Fazenda Girassol! Sou ${name} (contacto: ${phone}).%0AAssunto: ${subject}%0A%0A${msg}`;
+  window.open(`https://wa.me/244949555559?text=${text}`, '_blank');
+});
+</script>
+</body>
+</html>
